@@ -1,5 +1,6 @@
 import base64
-from utils.image_processing import convert_to_grayscale_base64, apply_invert_effect_base64
+from utils.image_processing import convert_to_grayscale_base64, apply_invert_effect_base64, apply_roberts_base64
+
 
 def handle_upload_result(e, page, original_image, processed_image):
     if e.files:
@@ -21,6 +22,8 @@ def apply_technique(page, dropdown, processed_image):
         result_b64 = convert_to_grayscale_base64(uploaded_image_path)
     elif selected == "Inversão de Cores":
         result_b64 = apply_invert_effect_base64(uploaded_image_path)
+    elif selected == "Detecção de Bordas (Roberts)":
+        result_b64 = apply_roberts_base64(uploaded_image_path)
     else:
         result_b64 = None
 

@@ -14,6 +14,7 @@ def build_layout(page):
         options=[
             ft.dropdown.Option("Preto e Branco"),
             ft.dropdown.Option("Inversão de Cores"),
+            ft.dropdown.Option("Detecção de Bordas (Roberts)"),
         ],
         width=300,
     )
