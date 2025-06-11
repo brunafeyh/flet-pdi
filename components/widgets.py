@@ -1,6 +1,6 @@
 import flet as ft
 
-def build_upload_box(file_picker):
+def build_upload_box(file_picker, label: str = ""):
     return ft.Container(
         width=300,
         height=180,
@@ -10,6 +10,7 @@ def build_upload_box(file_picker):
         padding=20,
         alignment=ft.alignment.center,
         content=ft.Column([
+            ft.Text(label, size=16, weight=ft.FontWeight.BOLD, color="#333"),  # Label opcional
             ft.Container(
                 bgcolor="#DCDBDB",
                 border_radius=100,
@@ -20,7 +21,7 @@ def build_upload_box(file_picker):
                 ft.Text("Arraste e solte o arquivo aqui ou", size=14),
                 ft.TextButton(
                     content=ft.Text(
-                        "escolha um arquivo",
+                        "Escolha um arquivo",
                         size=14,
                         weight=ft.FontWeight.BOLD,
                         color="#2C2C2C",
@@ -36,8 +37,6 @@ def build_upload_box(file_picker):
             spacing=5
         )
     )
-
-
 def build_buttons(start_button_ref):
     return ft.Row([
         ft.Container(
@@ -53,7 +52,7 @@ def build_buttons(start_button_ref):
         ft.Container(
             content=ft.TextButton(
                 "Iniciar",
-                ref=start_button_ref,
+                ref=start_button_ref,  # Garantir que a referência do botão está sendo passada corretamente
                 style=ft.ButtonStyle(color="white")
             ),
             bgcolor="blue",
