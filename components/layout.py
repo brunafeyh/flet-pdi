@@ -12,10 +12,11 @@ def build_layout(page):
         label="Técnica",
         hint_text="Selecione aqui a técnica",
         options=[
-            ft.dropdown.Option("Preto e Branco"),
             ft.dropdown.Option("Inversão de Cores"),
             ft.dropdown.Option("Detecção de Bordas (Roberts)"),
             ft.dropdown.Option("Operador de Prewitt"),
+            ft.dropdown.Option("Operador de Sobel"),
+            ft.dropdown.Option("Transformação Logarítmica"),
         ],
         width=300,
     )
