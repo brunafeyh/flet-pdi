@@ -15,6 +15,7 @@ def build_layout(page):
             ft.dropdown.Option("Preto e Branco"),
             ft.dropdown.Option("Inversão de Cores"),
             ft.dropdown.Option("Detecção de Bordas (Roberts)"),
+            ft.dropdown.Option("Operador de Prewitt"),
         ],
         width=300,
     )
