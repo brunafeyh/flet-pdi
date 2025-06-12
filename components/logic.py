@@ -81,21 +81,27 @@ def apply_technique(page, dropdown, processed_image, numeric_value=None, boost_i
         result_b64 = thresholding(image_a_path, numeric_input_value)
     elif selected == "Passa-Baixa Média (Básico)":
         try:
-            # Converte o valor para número (inteiro ou flutuante)
-            numeric_input_value = float(numeric_value)
+            numeric_input_value = float(numeric_value.strip())  # Tente converter, removendo espaços extras
             print(f"Valor numérico recebido: {numeric_input_value}")  # Exibe o valor numérico como número
         except ValueError:
-            print("O valor inserido não é um número válido.")  # Caso não seja um número válido
-            return  # Retorna e não aplica a técnica se o valor não for válido
+            try:
+                numeric_input_value = int(numeric_value.strip())  # Tente converter para inteiro se o float falhar
+                print(f"Valor inteiro recebido: {numeric_input_value}")  # Exibe o valor como inteiro
+            except ValueError:
+                print("O valor inserido não é um número válido.")  # Caso o valor não seja nem float nem int
+                return  # Retorna e não aplica a técnica se o valor não for válido
         result_b64 = meanLowPassFilter(image_a_path, numeric_input_value)
     elif selected == "Passa-Baixa Mediana":
         try:
-            # Converte o valor para número (inteiro ou flutuante)
-            numeric_input_value = float(numeric_value)
+            numeric_input_value = float(numeric_value.strip())  # Tente converter, removendo espaços extras
             print(f"Valor numérico recebido: {numeric_input_value}")  # Exibe o valor numérico como número
         except ValueError:
-            print("O valor inserido não é um número válido.")  # Caso não seja um número válido
-            return  # Retorna e não aplica a técnica se o valor não for válido
+            try:
+                numeric_input_value = int(numeric_value.strip())  # Tente converter para inteiro se o float falhar
+                print(f"Valor inteiro recebido: {numeric_input_value}")  # Exibe o valor como inteiro
+            except ValueError:
+                print("O valor inserido não é um número válido.")  # Caso o valor não seja nem float nem int
+                return  # Retorna e não aplica a técnica se o valor não for válido
         result_b64 = medianLowPassFilter(image_a_path, numeric_input_value)
     elif selected == "Escala de Cinza":
         result_b64 = grayscale(image_a_path)
