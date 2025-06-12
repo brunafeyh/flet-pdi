@@ -16,7 +16,12 @@ def build_layout(page):
         label="Técnica",
         hint_text="Selecione aqui a técnica",
         options=[
+            ft.dropdown.Option("Limiarização (Threshold)"),
             ft.dropdown.Option("Escala de Cinza"),
+            ft.dropdown.Option("Passa-Alta básico"),
+            ft.dropdown.Option("Passa-Alta Alto Reforço"),
+            ft.dropdown.Option("Passa-Baixa Média (Básico)"),
+            ft.dropdown.Option("Passa-Baixa Mediana"),
             ft.dropdown.Option("Inversão de Cores"),
             ft.dropdown.Option("Detecção de Bordas (Roberts)"),
             ft.dropdown.Option("Operador de Prewitt"),
