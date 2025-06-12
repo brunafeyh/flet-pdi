@@ -16,6 +16,7 @@ def build_layout(page):
         label="Técnica",
         hint_text="Selecione aqui a técnica",
         options=[
+            ft.dropdown.Option("Escala de Cinza"),
             ft.dropdown.Option("Inversão de Cores"),
             ft.dropdown.Option("Detecção de Bordas (Roberts)"),
             ft.dropdown.Option("Operador de Prewitt"),
@@ -25,6 +26,8 @@ def build_layout(page):
             ft.dropdown.Option("Adição de Imagens"),
             ft.dropdown.Option("Subtração de Imagens"),
             ft.dropdown.Option("Divisão de Imagens"),
+            ft.dropdown.Option("Histograma (Escala de cinza)"),
+            ft.dropdown.Option("Equalização de Histograma"),
         ],
         width=300,
     )

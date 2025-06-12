@@ -1,6 +1,10 @@
 import base64
-from utils.image_processing import apply_invert_effect_base64, apply_roberts_base64, apply_prewitt_base64, apply_sobel_base64, apply_log_base64, mul_base64, sub_base64, sum_base64, div_base64
-
+from utils.image_processing import apply_roberts_base64, apply_prewitt_base64, apply_sobel_base64, apply_log_base64
+from utils.histogram import histogram
+from utils.equalized_histogram import equalize_histogram
+from utils.arithmetic_operations import mul_base64, sub_base64, sum_base64, div_base64
+from utils.invert_effect import apply_invert_effect_base64
+from utils.gray_scale import grayscale
 
 def handle_upload_result(e, page, original_image, original_image_b, processed_image, key):
     # Verifica se o arquivo foi enviado
@@ -19,6 +23,7 @@ def handle_upload_result(e, page, original_image, original_image_b, processed_im
             # Limpa a imagem processada
             processed_image.src_base64 = None
             page.update()
+
 def apply_technique(page, dropdown, processed_image):
     image_a_path = page.client_storage.get("uploaded_image_path")
     image_b_path = page.client_storage.get("uploaded_image_path_b")  # Novo caminho para a segunda imagem
@@ -31,12 +36,18 @@ def apply_technique(page, dropdown, processed_image):
         result_b64 = apply_invert_effect_base64(image_a_path)
     elif selected == "Detecção de Bordas (Roberts)":
         result_b64 = apply_roberts_base64(image_a_path)
+    elif selected == "Escala de Cinza":
+        result_b64 = grayscale(image_a_path)
     elif selected == "Operador de Prewitt":
         result_b64 = apply_prewitt_base64(image_a_path)
     elif selected == "Operador de Sobel":
         result_b64 = apply_sobel_base64(image_a_path)
     elif selected == "Transformação Logarítmica":
         result_b64 = apply_log_base64(image_a_path)
+    elif selected == "Histograma (Escala de cinza)":
+        result_b64 = histogram(image_a_path)
+    elif selected == "Equalização de Histograma":
+        result_b64 = equalize_histogram(image_a_path)
     elif selected == "Multiplicação de Imagens" and image_b_path:
         # Verifica se a Imagem B está carregada
         if image_b_path:
